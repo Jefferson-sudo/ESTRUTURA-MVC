@@ -12,19 +12,23 @@ class Core {
 
 
         if (!$url == "") { //Verifica se a  $url não esta vazia
-            $url = explode('/', $url);
-            array_shift($url);
+            $url = explode('/',$url);
+            array_shift($url);//Metado apaga valor no array no indice 0
             
             //Pega o controller
-            $this->controller = $url[0];
+            $this->controller = ucfirst($url[0])."Controller.php";
             array_shift($url);          
             
             //Pega os metados
-            $this->metodo = $url[0];
-            array_shift($url);
+            if(isset($url[0])){//Testa se existe metado
+                $this->metodo = $url[0];
+                array_shift($url);
+            }
             
             //Pega os parametros
             $this->parametros = array_filter($url);//Esse aqui recebe todos os valores do array
+        }else{
+            $this->controller = "index.php";
         }
     }
     
