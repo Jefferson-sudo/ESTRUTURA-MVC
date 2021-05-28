@@ -2,7 +2,8 @@
 namespace app\controllers;
 
 class ProdutoController {
-    public function lista(){
-        return "Listando produtos ...";
+    
+    public function lista($valor){
+        return "Listando produtos ".$valor."...";
     }
 }
