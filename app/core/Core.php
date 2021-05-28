@@ -13,8 +13,11 @@ class Core {
     //Funcao que inicia o sistemas
     public function run(){
         $controllerCorrete = $this->getController();
-        
+
         $c = new $controllerCorrete(); //Cria objeto do tipo que vem no controller
+        echo $c->lista();
+        $p = new $controllerCorrete();
+        echo $p->lista();
     }
     public function verificaUri() {
         $url = explode("index.php", $_SERVER["PHP_SELF"]); //explode - Retorna uma matriz de strings, cada uma como substring de string formada pela divisão dela a partir do delimiter. $_SERVER["PHP_SELF" remete ao aquivo php em questão (não é recomendado seu uso)
@@ -26,7 +29,7 @@ class Core {
             array_shift($url);//Metado apaga valor no array no indice 0
             
             //Pega o controller
-            $this->controller = ucfirst($url[0])."Controller.php";
+            $this->controller = ucfirst($url[0])."Controller";
             array_shift($url);          
             
             //Pega os metados
@@ -44,7 +47,7 @@ class Core {
     
     //Metados especiais 
     function getController() {
-        return $this->controller;
+        return "app\\controllers\\".$this->controller;
     }
 
     function getMetodo() {

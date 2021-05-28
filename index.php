@@ -1,7 +1,9 @@
 <?php
 
-require("app/core/Core.php");//Chamando a classe Core
-
+//Chamandos as classes
+require 'app/controllers/ClienteController.php';
+require 'app/controllers/ProdutoController.php';
+require("app/core/Core.php");
 $core=new Core();
 $core->run();//Executa run
 
