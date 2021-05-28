@@ -16,8 +16,6 @@ class Core {
 
         $c = new $controllerCorrete(); //Cria objeto do tipo que vem no controller
         echo $c->lista();
-        $p = new $controllerCorrete();
-        echo $p->lista();
     }
     public function verificaUri() {
         $url = explode("index.php", $_SERVER["PHP_SELF"]); //explode - Retorna uma matriz de strings, cada uma como substring de string formada pela divisão dela a partir do delimiter. $_SERVER["PHP_SELF" remete ao aquivo php em questão (não é recomendado seu uso)

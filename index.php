@@ -1,8 +1,9 @@
 <?php
 
 //Chamandos as classes
-require 'app/controllers/ClienteController.php';
-require 'app/controllers/ProdutoController.php';
+require 'vendor/autoload.php';
+/*require 'app/controllers/ClienteController.php';
+require 'app/controllers/ProdutoController.php';*/
 require("app/core/Core.php");
 $core=new Core();
 $core->run();//Executa run
