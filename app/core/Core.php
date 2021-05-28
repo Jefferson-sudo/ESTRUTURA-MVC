@@ -5,8 +5,18 @@ class Core {
     private $metodo;
     private $parametros = array();
 
+    //Matado construtor
+    function __construct() {
+        $this->verificaUri();
+    }
+
     //Funcao que inicia o sistemas
-    public function run() {
+    public function run(){
+        $controllerCorrete = $this->getController();
+        
+        $c = new $controllerCorrete(); //Cria objeto do tipo que vem no controller
+    }
+    public function verificaUri() {
         $url = explode("index.php", $_SERVER["PHP_SELF"]); //explode - Retorna uma matriz de strings, cada uma como substring de string formada pela divisão dela a partir do delimiter. $_SERVER["PHP_SELF" remete ao aquivo php em questão (não é recomendado seu uso)
         $url = end($url);
 
