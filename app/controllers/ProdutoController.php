@@ -3,7 +3,11 @@ namespace app\controllers;
 
 class ProdutoController {
     
+    public function index(){
+        echo "Metado index de produto";
+    }
+    
     public function lista($valor){
-        return "Listando produtos ".$valor."...";
+        echo "Listando produtos ".$valor."...";
     }
 }

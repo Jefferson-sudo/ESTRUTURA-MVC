@@ -15,8 +15,7 @@ class Core {
         $controllerCorrete = $this->getController();
 
         $c = new $controllerCorrete(); //Cria objeto do tipo que vem no controller
-        //echo $c->lista();
-        echo call_user_func_array(array ($c, $this->getMetodo()), $this->getParametros()); 
+        call_user_func_array(array ($c, $this->getMetodo()), $this->getParametros()); 
     }
     public function verificaUri() {
         $url = explode("index.php", $_SERVER["PHP_SELF"]); //explode - Retorna uma matriz de strings, cada uma como substring de string formada pela divisão dela a partir do delimiter. $_SERVER["PHP_SELF" remete ao aquivo php em questão (não é recomendado seu uso)
@@ -40,17 +39,25 @@ class Core {
             //Pega os parametros
             $this->parametros = array_filter($url);//Esse aqui recebe todos os valores do array
         }else{
-            $this->controller = "index.php";
+            $this->controller = "IndexController";
         }
     }
     
     //Metados especiais 
     function getController() {
-        return "app\\controllers\\".$this->controller;
+        //Validando a classe
+        if(class_exists("app\\controllers\\".$this->controller)){
+            return "app\\controllers\\".$this->controller;//Retorna a classe que foi passada
+        }
+        return "app\\controllers\\IndexController"; //Retorna a classe padrão
     }
 
     function getMetodo() {
-        return $this->metodo;
+       //Validando metados
+        if(method_exists("app\\controllers\\".$this->controller, $this->metodo)){
+            return $this->metodo;//Retorna o metado passado
+        }
+        return "index";//Retorna metado padrão
     }
 
     function getParametros() {
