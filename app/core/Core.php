@@ -39,25 +39,25 @@ class Core {
             //Pega os parametros
             $this->parametros = array_filter($url);//Esse aqui recebe todos os valores do array
         }else{
-            $this->controller = "IndexController";
+            $this->controller = ucfirst(CONTROLLER_PADRAO)."Controller";
         }
     }
     
     //Metados especiais 
     function getController() {
         //Validando a classe
-        if(class_exists("app\\controllers\\".$this->controller)){
-            return "app\\controllers\\".$this->controller;//Retorna a classe que foi passada
+        if(class_exists(NAMESPACE_CONTROLLER.$this->controller)){
+            return NAMESPACE_CONTROLLER.$this->controller;//Retorna a classe que foi passada
         }
-        return "app\\controllers\\IndexController"; //Retorna a classe padrão
+        return NAMESPACE_CONTROLLER.ucfirst(CONTROLLER_PADRAO)."Controller"; //Retorna a classe padrão
     }
 
     function getMetodo() {
        //Validando metados
-        if(method_exists("app\\controllers\\".$this->controller, $this->metodo)){
+        if(method_exists(NAMESPACE_CONTROLLER.$this->controller, $this->metodo)){
             return $this->metodo;//Retorna o metado passado
         }
-        return "index";//Retorna metado padrão
+        return METADO_PADRAO;//Retorna metado padrão
     }
 
     function getParametros() {
