@@ -10,5 +10,7 @@
 
     <h1>Curso de MVC </h1>
     <p>Estamos na view do cliente</p>    
+    <p>Nome : <?php echo $nome; ?><br>Email :<?php echo $email;?></p>
+
 </body>
 </html>

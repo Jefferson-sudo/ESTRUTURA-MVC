@@ -12,11 +12,13 @@ class Core {
 
     //Funcao que inicia o sistemas
     public function run(){
-        $controllerCorrete = $this->getController();
+        $controllerCorrente = $this->getController();//Chama a funcao getController na linha 51
 
-        $c = new $controllerCorrete(); //Cria objeto do tipo que vem no controller
+        $c = new $controllerCorrente(); //Cria objeto do tipo que vem no controller
         call_user_func_array(array ($c, $this->getMetodo()), $this->getParametros()); 
     }
+    
+    //Funcoa responsavel por pegar -> controller, metados e os parametros
     public function verificaUri() {
         $url = explode("index.php", $_SERVER["PHP_SELF"]); //explode - Retorna uma matriz de strings, cada uma como substring de string formada pela divisão dela a partir do delimiter. $_SERVER["PHP_SELF" remete ao aquivo php em questão (não é recomendado seu uso)
         $url = end($url);
@@ -43,23 +45,27 @@ class Core {
         }
     }
     
-    //Metados especiais 
+    /*Metados especiais */
+    
+    //Validando a classe
     function getController() {
-        //Validando a classe
+        
         if(class_exists(NAMESPACE_CONTROLLER.$this->controller)){
             return NAMESPACE_CONTROLLER.$this->controller;//Retorna a classe que foi passada
         }
         return NAMESPACE_CONTROLLER.ucfirst(CONTROLLER_PADRAO)."Controller"; //Retorna a classe padrão
     }
-
+    
+    //Validando metados
     function getMetodo() {
-       //Validando metados
+       
         if(method_exists(NAMESPACE_CONTROLLER.$this->controller, $this->metodo)){
             return $this->metodo;//Retorna o metado passado
         }
         return METADO_PADRAO;//Retorna metado padrão
     }
-
+    
+    //Retorna os Parametros
     function getParametros() {
         return $this->parametros;
     }

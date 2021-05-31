@@ -23,7 +23,10 @@ class ClienteController extends Controller{
 
     public function ver() {
         //Chamar a view v_cliente.php
-        $this->load("v_cliente");
+        $dados["nome"]  = "Jefferson Mateus";
+        $dados["email"] = "jefferson@jefferson.com";
+        
+        $this->load("v_cliente",$dados);
     }
 
 }

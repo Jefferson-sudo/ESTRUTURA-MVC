@@ -7,7 +7,7 @@ use app\core\Controller;
 class ProdutoController extends Controller {
 
     public function index() {
-        echo "Metado index de produto";
+        echo "Metado padrao de produto";
     }
 
     public function lista($valor = 0) {
