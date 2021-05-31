@@ -2,7 +2,8 @@
 
 namespace app\controllers;
 
-class ClienteController {
+use app\core\Controller;
+class ClienteController extends Controller{
 
     public function index() {
         echo "Metado index de cliente";
@@ -23,11 +24,6 @@ class ClienteController {
     public function ver() {
         //Chamar a view v_cliente.php
         $this->load("v_cliente");
-    }
-
-    public function load($viewName /* $viewDados=  array() */) {
-        //extract($viewDados);
-        include 'app/views/' . $viewName . ".php";
     }
 
 }

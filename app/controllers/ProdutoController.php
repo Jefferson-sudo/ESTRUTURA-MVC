@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
-class ProdutoController {
+use app\core\Controller;
+
+class ProdutoController extends Controller {
 
     public function index() {
         echo "Metado index de produto";
@@ -19,5 +21,10 @@ class ProdutoController {
             echo "Você se esqueceu de passar o parametro!";
         }
     }
+
+    public function ver() {
+        //Chamar a view v_cliente.php
+        $this->load("v_produto");
+    }
+
 }
-    
