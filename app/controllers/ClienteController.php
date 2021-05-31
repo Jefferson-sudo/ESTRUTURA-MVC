@@ -15,10 +15,19 @@ class ClienteController {
             } else {
                 echo "Não foi passado um parametro valido!";
             }
-        }else{
+        } else {
             echo "Você se esqueceu de passar o parametro!";
         }
-        
+    }
+
+    public function ver() {
+        //Chamar a view v_cliente.php
+        $this->load("v_cliente");
+    }
+
+    public function load($viewName /* $viewDados=  array() */) {
+        //extract($viewDados);
+        include 'app/views/' . $viewName . ".php";
     }
 
 }
