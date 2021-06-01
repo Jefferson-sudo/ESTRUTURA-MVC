@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\M_produto;
 use app\core\Controller;
 
 class ProdutoController extends Controller {
@@ -10,16 +11,10 @@ class ProdutoController extends Controller {
         echo "Metado padrao de produto";
     }
 
-    public function lista($valor = 0) {
-        if ($valor != NULL) {
-            if (ctype_digit($valor)) {
-                echo "Listando produtos " . $valor . "...";
-            } else {
-                echo "O parametro passado não é valido! ";
-            }
-        } else {
-            echo "Você se esqueceu de passar o parametro!";
-        }
+    public function lista() {
+        $produto = new M_produto;
+        $dados["produtos"] = $produto->lista();
+        $this->load("v_produto",$dados);
     }
 
     public function ver() {

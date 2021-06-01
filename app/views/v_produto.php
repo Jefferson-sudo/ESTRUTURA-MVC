@@ -10,5 +10,10 @@
 
     <h1>Curso de MVC </h1>
     <p>Estamos na view do produto</p>    
+    <?php
+        foreach ($produtos as $produto){
+            echo $produto["produto"]." -> R$".$produto["preco"].",00</br>";
+        }
+    ?>
 </body>
 </html>

@@ -10,7 +10,12 @@
 
     <h1>Curso de MVC </h1>
     <p>Estamos na view do cliente</p>    
-    <p>Nome : <?php echo $nome; ?><br>Email :<?php echo $email;?></p>
+    <?php
+        //$clientes recebe os valores do metado lista em ClienteController linha 17
+        foreach ($clientes as $cliente){
+           echo $cliente["nome"]."</br>";
+        }
+    ?>
 
 </body>
 </html>

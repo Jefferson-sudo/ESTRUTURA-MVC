@@ -1,7 +1,7 @@
 <?php
 
 define('SERVIDOR', 'localhost');
-define('BANCO', 'nomedobanco');
+define('BANCO', 'estudoPDO');
 define('USUARIO', 'root');
 define('SENHA', '');
 
