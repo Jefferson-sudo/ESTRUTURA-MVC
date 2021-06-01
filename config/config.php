@@ -1,5 +1,12 @@
 <?php
 
+define('SERVIDOR', 'localhost');
+define('BANCO', 'nomedobanco');
+define('USUARIO', 'root');
+define('SENHA', '');
+
+
+
 define('CONTROLLER_PADRAO', 'index');
 define('METADO_PADRAO', 'index');
 define('NAMESPACE_CONTROLLER', 'app\\controllers\\');
